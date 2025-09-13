@@ -1,0 +1,22 @@
+---
+- name: Create /opt/devops directory and info.txt file
+  hosts: all
+  become: yes
+  tasks:
+    - name: Create /opt/devops directory
+      file:
+        path: /opt/devops
+        state: directory
+        mode: '0755'
+    
+    - name: Create info.txt file with content
+      copy:
+        dest: /opt/devops/info.txt
+        content: "Hello from Ansible!"
+        mode: '0644'
+    
+    - name: Create info.txt file with content
+      copy:
+        dest: /opt/devops/info.txt
+        content: "Hello from Ansible!"
+        mode: '0644'
