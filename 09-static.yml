@@ -1,11 +1,10 @@
 ---
 - name: Static Page
-  hosts: g1
+  hosts: all
   become: yes
-
   tasks:
     - name: Update static page
-      copy:
+      template:
         src: static.html
-        dest: /var/html/static.html
+        dest: /var/www/html/index.html
 ...
