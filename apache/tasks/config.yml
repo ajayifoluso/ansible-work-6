@@ -1,0 +1,17 @@
+---
+- name: Playbook name
+  hosts: all
+  become: yes
+  vars:
+    myusername: ajayifoluso
+  tasks:
+    - name: Update static page
+      copy:
+        src: static.html
+        dest: /var/www/html/index.html
+    
+    - name: Update Dynamic page
+      template:
+        src: dynamic.j2
+        dest: /var/www/html/dynamic.html
+...

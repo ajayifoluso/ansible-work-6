@@ -1,0 +1,44 @@
+---
+    # YUM-based systems (Amazon Linux, RedHat, CentOS)
+    - name: Install web server on RPM-based systems
+      yum:
+        name: httpd
+        state: present
+      when: ansible_distribution in ["Amazon", "RedHat", "CentOS"]
+    
+    - name: Start web server on RPM-based systems
+      service:
+        name: httpd
+        state: started
+      when: ansible_distribution in ["Amazon", "RedHat", "CentOS"]
+    
+    - name: Enable web server on RPM-based systems
+      service:
+        name: httpd
+        enabled: yes
+      when: ansible_distribution in ["Amazon", "RedHat", "CentOS"]
+    
+    # APT-based systems (Ubuntu, Debian)
+    - name: Update package cache for DEB-based systems
+      apt:
+        update_cache: yes
+      when: ansible_distribution in ["Ubuntu", "Debian"]
+    
+    - name: Install web server on DEB-based systems
+      apt:
+        name: apache2
+        state: present
+      when: ansible_distribution in ["Ubuntu", "Debian"]
+    
+    - name: Start web server on DEB-based systems
+      service:
+        name: apache2
+        state: started
+      when: ansible_distribution in ["Ubuntu", "Debian"]
+    
+    - name: Enable web server on DEB-based systems
+      service:
+        name: apache2
+        enabled: yes
+      when: ansible_distribution in ["Ubuntu", "Debian"]
+...
